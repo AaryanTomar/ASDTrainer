@@ -4,6 +4,7 @@ from torchvision.transforms import RandomCrop
 import csv
 import numpy as np
 
+
 def generate_audio_set(dataPath, line, audioLength):
 
     data = line.split(',')
@@ -50,7 +51,8 @@ def load_audio(data, dataPath, audio = None):
     fps = 25
     #audio = audioSet[dataName]    
     
-    # fps is not always 25, in order to align the visual, we modify the window and step in MFCC extraction process based on fps
+    # fps is not always 25, in order to align the visual, we modify the window and step in MFCC extraction process
+    # based on fps
     audio = python_speech_features.mfcc(audio, 16000, numcep = 13, winlen = 0.025 * 25 / fps, winstep = 0.010 * 25 / fps)
     # maxAudio = int(numFrames * 4)
     # if audio.shape[0] < maxAudio:

@@ -23,7 +23,8 @@ def load_audio(data, dataPath, numFrames, audioSet = None):
     fps = float(data[2])    
     audio = audioSet[dataName]    
     
-    # fps is not always 25, in order to align the visual, we modify the window and step in MFCC extraction process based on fps
+    # fps is not always 25, in order to align the visual, we modify the window and step in MFCC extraction process
+    # based on fps
     audio = python_speech_features.mfcc(audio, 16000, numcep = 13, winlen = 0.025 * 25 / fps, winstep = 0.010 * 25 / fps)
     maxAudio = int(numFrames * 4)
     if audio.shape[0] < maxAudio:
